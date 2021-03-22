@@ -1,5 +1,5 @@
 name: google_analytics_legacy
-description: A new flutter plugin project.
+description: Legacy Google Analytics plugin.
 version: 0.0.2
 author: Miroslav Kudrnac
 repository: https://github.com/mkudrnac/google_analytics_legacy
