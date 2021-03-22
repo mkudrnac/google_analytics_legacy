@@ -56,9 +56,9 @@ class EventBuilder extends HitBuilder {
 class HitBuilder {
   final _map = HashMap<String, String>();
   ProductAction _productAction;
-  final _productImpressions = HashMap<String, List<Product>>(); //_zzry
-  final _promotions = <Promotion>[]; //_zzrz
-  final _products = <Product>[]; //_zzsa
+  final _productImpressions = HashMap<String, List<Product>>();
+  final _promotions = <Promotion>[];
+  final _products = <Product>[];
 
   void setNewSession() {
     set("&sc", "start");
