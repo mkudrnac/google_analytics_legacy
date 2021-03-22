@@ -1,19 +1,7 @@
 import 'package:pigeon/pigeon_lib.dart';
 
-class StringValue {
+class TrackerGetValue {
   String value;
-}
-
-class BoolValue {
-  bool value;
-}
-
-class DoubleValue {
-  double value;
-}
-
-class IntValue {
-  int value;
 }
 
 class TrackerStringValue {
@@ -42,6 +30,12 @@ class TrackerSetValue {
   String value;
 }
 
+class TrackerSetScreenResolutionValue {
+  int trackerId;
+  int value1;
+  int value2;
+}
+
 class HitBuilderMessage {
   int trackerId;
   String data;
@@ -53,7 +47,7 @@ abstract class TrackerApi {
   void setSessionTimeout(TrackerIntValue value);
   void enableAutoActivityTracking(TrackerBoolValue value);
   void send(HitBuilderMessage hitBuilderMessage);
-  StringValue get(TrackerStringValue key);
+  TrackerGetValue get(TrackerStringValue key);
   void set(TrackerSetValue value);
   void setSampleRate(TrackerDoubleValue value);
   void setUseSecure(TrackerBoolValue value);
@@ -66,7 +60,7 @@ abstract class TrackerApi {
   void setLanguage(TrackerStringValue value);
   void setEncoding(TrackerStringValue value);
   void setScreenColors(TrackerStringValue value);
-  void setScreenResolution(IntValue value1, IntValue value2);
+  void setScreenResolution(TrackerSetScreenResolutionValue value);
   void setViewportSize(TrackerStringValue value);
   void setClientId(TrackerStringValue value);
   void setAppName(TrackerStringValue value);
@@ -77,10 +71,31 @@ abstract class TrackerApi {
   void enableAdvertisingIdCollection(TrackerBoolValue value);
 }
 
+class GABool {
+  bool value;
+}
+
+class GAInt {
+  int value;
+}
+
+class TrackingId {
+  String trackingId;
+}
+
+class TrackerId {
+  int trackerId;
+}
+
 @HostApi()
 abstract class GoogleAnalyticsApi {
   void getInstance();
-  IntValue newTracker(StringValue gaId);
+  void setDryRun(GABool value);
+  GABool isDryRunEnabled();
+  void setAppOptOut(GABool value);
+  GABool getAppOptOut();
+  void setLocalDispatchPeriod(GAInt value);
+  TrackerId newTracker(TrackingId gaId);
 }
 
 void configurePigeon(PigeonOptions opts) {

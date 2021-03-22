@@ -20,8 +20,30 @@ class GoogleAnalytics {
     return _instance;
   }
 
-  Future<Tracker> newTracker(final String s) async {
-    final trackerId = await _api.newTracker(StringValue()..value = s);
-    return Tracker(trackerId.value);
+  Future<void> setDryRun(final bool value) async {
+    return _api.setDryRun(GABool()..value = value);
+  }
+
+  Future<bool> isDryRunEnabled() async {
+    final result = await _api.isDryRunEnabled();
+    return result.value;
+  }
+
+  Future<void> setAppOptOut(final bool value) async {
+    return _api.setAppOptOut(GABool()..value = value);
+  }
+
+  Future<bool> getAppOptOut() async {
+    final result = await _api.getAppOptOut();
+    return result.value;
+  }
+
+  Future<void> setLocalDispatchPeriod(final int value) async {
+    return _api.setLocalDispatchPeriod(GAInt()..value = value);
+  }
+
+  Future<Tracker> newTracker(final String trackingId) async {
+    final tracker = await _api.newTracker(TrackingId()..trackingId = trackingId);
+    return Tracker(tracker.trackerId);
   }
 }

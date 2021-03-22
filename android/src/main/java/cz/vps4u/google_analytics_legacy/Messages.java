@@ -93,7 +93,7 @@ public class Messages {
   }
 
   /** Generated class from Pigeon that represents data sent in messages. */
-  public static class StringValue {
+  public static class TrackerGetValue {
     private String value;
     public String getValue() { return value; }
     public void setValue(String setterArg) { this.value = setterArg; }
@@ -103,8 +103,8 @@ public class Messages {
       toMapResult.put("value", value);
       return toMapResult;
     }
-    static StringValue fromMap(Map<String, Object> map) {
-      StringValue fromMapResult = new StringValue();
+    static TrackerGetValue fromMap(Map<String, Object> map) {
+      TrackerGetValue fromMapResult = new TrackerGetValue();
       Object value = map.get("value");
       fromMapResult.value = (String)value;
       return fromMapResult;
@@ -197,7 +197,59 @@ public class Messages {
   }
 
   /** Generated class from Pigeon that represents data sent in messages. */
-  public static class IntValue {
+  public static class TrackerSetScreenResolutionValue {
+    private Long trackerId;
+    public Long getTrackerId() { return trackerId; }
+    public void setTrackerId(Long setterArg) { this.trackerId = setterArg; }
+
+    private Long value1;
+    public Long getValue1() { return value1; }
+    public void setValue1(Long setterArg) { this.value1 = setterArg; }
+
+    private Long value2;
+    public Long getValue2() { return value2; }
+    public void setValue2(Long setterArg) { this.value2 = setterArg; }
+
+    Map<String, Object> toMap() {
+      Map<String, Object> toMapResult = new HashMap<>();
+      toMapResult.put("trackerId", trackerId);
+      toMapResult.put("value1", value1);
+      toMapResult.put("value2", value2);
+      return toMapResult;
+    }
+    static TrackerSetScreenResolutionValue fromMap(Map<String, Object> map) {
+      TrackerSetScreenResolutionValue fromMapResult = new TrackerSetScreenResolutionValue();
+      Object trackerId = map.get("trackerId");
+      fromMapResult.trackerId = (trackerId == null) ? null : ((trackerId instanceof Integer) ? (Integer)trackerId : (Long)trackerId);
+      Object value1 = map.get("value1");
+      fromMapResult.value1 = (value1 == null) ? null : ((value1 instanceof Integer) ? (Integer)value1 : (Long)value1);
+      Object value2 = map.get("value2");
+      fromMapResult.value2 = (value2 == null) ? null : ((value2 instanceof Integer) ? (Integer)value2 : (Long)value2);
+      return fromMapResult;
+    }
+  }
+
+  /** Generated class from Pigeon that represents data sent in messages. */
+  public static class GABool {
+    private Boolean value;
+    public Boolean getValue() { return value; }
+    public void setValue(Boolean setterArg) { this.value = setterArg; }
+
+    Map<String, Object> toMap() {
+      Map<String, Object> toMapResult = new HashMap<>();
+      toMapResult.put("value", value);
+      return toMapResult;
+    }
+    static GABool fromMap(Map<String, Object> map) {
+      GABool fromMapResult = new GABool();
+      Object value = map.get("value");
+      fromMapResult.value = (Boolean)value;
+      return fromMapResult;
+    }
+  }
+
+  /** Generated class from Pigeon that represents data sent in messages. */
+  public static class GAInt {
     private Long value;
     public Long getValue() { return value; }
     public void setValue(Long setterArg) { this.value = setterArg; }
@@ -207,10 +259,48 @@ public class Messages {
       toMapResult.put("value", value);
       return toMapResult;
     }
-    static IntValue fromMap(Map<String, Object> map) {
-      IntValue fromMapResult = new IntValue();
+    static GAInt fromMap(Map<String, Object> map) {
+      GAInt fromMapResult = new GAInt();
       Object value = map.get("value");
       fromMapResult.value = (value == null) ? null : ((value instanceof Integer) ? (Integer)value : (Long)value);
+      return fromMapResult;
+    }
+  }
+
+  /** Generated class from Pigeon that represents data sent in messages. */
+  public static class TrackerId {
+    private Long trackerId;
+    public Long getTrackerId() { return trackerId; }
+    public void setTrackerId(Long setterArg) { this.trackerId = setterArg; }
+
+    Map<String, Object> toMap() {
+      Map<String, Object> toMapResult = new HashMap<>();
+      toMapResult.put("trackerId", trackerId);
+      return toMapResult;
+    }
+    static TrackerId fromMap(Map<String, Object> map) {
+      TrackerId fromMapResult = new TrackerId();
+      Object trackerId = map.get("trackerId");
+      fromMapResult.trackerId = (trackerId == null) ? null : ((trackerId instanceof Integer) ? (Integer)trackerId : (Long)trackerId);
+      return fromMapResult;
+    }
+  }
+
+  /** Generated class from Pigeon that represents data sent in messages. */
+  public static class TrackingId {
+    private String trackingId;
+    public String getTrackingId() { return trackingId; }
+    public void setTrackingId(String setterArg) { this.trackingId = setterArg; }
+
+    Map<String, Object> toMap() {
+      Map<String, Object> toMapResult = new HashMap<>();
+      toMapResult.put("trackingId", trackingId);
+      return toMapResult;
+    }
+    static TrackingId fromMap(Map<String, Object> map) {
+      TrackingId fromMapResult = new TrackingId();
+      Object trackingId = map.get("trackingId");
+      fromMapResult.trackingId = (String)trackingId;
       return fromMapResult;
     }
   }
@@ -221,7 +311,7 @@ public class Messages {
     void setSessionTimeout(TrackerIntValue arg);
     void enableAutoActivityTracking(TrackerBoolValue arg);
     void send(HitBuilderMessage arg);
-    StringValue get(TrackerStringValue arg);
+    TrackerGetValue get(TrackerStringValue arg);
     void set(TrackerSetValue arg);
     void setSampleRate(TrackerDoubleValue arg);
     void setUseSecure(TrackerBoolValue arg);
@@ -234,7 +324,7 @@ public class Messages {
     void setLanguage(TrackerStringValue arg);
     void setEncoding(TrackerStringValue arg);
     void setScreenColors(TrackerStringValue arg);
-    void setScreenResolution(IntValue arg);
+    void setScreenResolution(TrackerSetScreenResolutionValue arg);
     void setViewportSize(TrackerStringValue arg);
     void setClientId(TrackerStringValue arg);
     void setAppName(TrackerStringValue arg);
@@ -339,7 +429,7 @@ public class Messages {
             try {
               @SuppressWarnings("ConstantConditions")
               TrackerStringValue input = TrackerStringValue.fromMap((Map<String, Object>)message);
-              StringValue output = api.get(input);
+              TrackerGetValue output = api.get(input);
               wrapped.put("result", output.toMap());
             }
             catch (Error | RuntimeException exception) {
@@ -611,7 +701,7 @@ public class Messages {
             Map<String, Object> wrapped = new HashMap<>();
             try {
               @SuppressWarnings("ConstantConditions")
-              IntValue input = IntValue.fromMap((Map<String, Object>)message);
+              TrackerSetScreenResolutionValue input = TrackerSetScreenResolutionValue.fromMap((Map<String, Object>)message);
               api.setScreenResolution(input);
               wrapped.put("result", null);
             }
@@ -798,7 +888,12 @@ public class Messages {
   /** Generated interface from Pigeon that represents a handler of messages from Flutter.*/
   public interface GoogleAnalyticsApi {
     void getInstance();
-    IntValue newTracker(StringValue arg);
+    void setDryRun(GABool arg);
+    GABool isDryRunEnabled();
+    void setAppOptOut(GABool arg);
+    GABool getAppOptOut();
+    void setLocalDispatchPeriod(GAInt arg);
+    TrackerId newTracker(TrackingId arg);
 
     /** Sets up an instance of `GoogleAnalyticsApi` to handle messages through the `binaryMessenger`. */
     static void setup(BinaryMessenger binaryMessenger, GoogleAnalyticsApi api) {
@@ -823,14 +918,115 @@ public class Messages {
       }
       {
         BasicMessageChannel<Object> channel =
+            new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.GoogleAnalyticsApi.setDryRun", new StandardMessageCodec());
+        if (api != null) {
+          channel.setMessageHandler((message, reply) -> {
+            Map<String, Object> wrapped = new HashMap<>();
+            try {
+              @SuppressWarnings("ConstantConditions")
+              GABool input = GABool.fromMap((Map<String, Object>)message);
+              api.setDryRun(input);
+              wrapped.put("result", null);
+            }
+            catch (Error | RuntimeException exception) {
+              wrapped.put("error", wrapError(exception));
+            }
+            reply.reply(wrapped);
+          });
+        } else {
+          channel.setMessageHandler(null);
+        }
+      }
+      {
+        BasicMessageChannel<Object> channel =
+            new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.GoogleAnalyticsApi.isDryRunEnabled", new StandardMessageCodec());
+        if (api != null) {
+          channel.setMessageHandler((message, reply) -> {
+            Map<String, Object> wrapped = new HashMap<>();
+            try {
+              GABool output = api.isDryRunEnabled();
+              wrapped.put("result", output.toMap());
+            }
+            catch (Error | RuntimeException exception) {
+              wrapped.put("error", wrapError(exception));
+            }
+            reply.reply(wrapped);
+          });
+        } else {
+          channel.setMessageHandler(null);
+        }
+      }
+      {
+        BasicMessageChannel<Object> channel =
+            new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.GoogleAnalyticsApi.setAppOptOut", new StandardMessageCodec());
+        if (api != null) {
+          channel.setMessageHandler((message, reply) -> {
+            Map<String, Object> wrapped = new HashMap<>();
+            try {
+              @SuppressWarnings("ConstantConditions")
+              GABool input = GABool.fromMap((Map<String, Object>)message);
+              api.setAppOptOut(input);
+              wrapped.put("result", null);
+            }
+            catch (Error | RuntimeException exception) {
+              wrapped.put("error", wrapError(exception));
+            }
+            reply.reply(wrapped);
+          });
+        } else {
+          channel.setMessageHandler(null);
+        }
+      }
+      {
+        BasicMessageChannel<Object> channel =
+            new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.GoogleAnalyticsApi.getAppOptOut", new StandardMessageCodec());
+        if (api != null) {
+          channel.setMessageHandler((message, reply) -> {
+            Map<String, Object> wrapped = new HashMap<>();
+            try {
+              GABool output = api.getAppOptOut();
+              wrapped.put("result", output.toMap());
+            }
+            catch (Error | RuntimeException exception) {
+              wrapped.put("error", wrapError(exception));
+            }
+            reply.reply(wrapped);
+          });
+        } else {
+          channel.setMessageHandler(null);
+        }
+      }
+      {
+        BasicMessageChannel<Object> channel =
+            new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.GoogleAnalyticsApi.setLocalDispatchPeriod", new StandardMessageCodec());
+        if (api != null) {
+          channel.setMessageHandler((message, reply) -> {
+            Map<String, Object> wrapped = new HashMap<>();
+            try {
+              @SuppressWarnings("ConstantConditions")
+              GAInt input = GAInt.fromMap((Map<String, Object>)message);
+              api.setLocalDispatchPeriod(input);
+              wrapped.put("result", null);
+            }
+            catch (Error | RuntimeException exception) {
+              wrapped.put("error", wrapError(exception));
+            }
+            reply.reply(wrapped);
+          });
+        } else {
+          channel.setMessageHandler(null);
+        }
+      }
+      {
+        BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.GoogleAnalyticsApi.newTracker", new StandardMessageCodec());
         if (api != null) {
           channel.setMessageHandler((message, reply) -> {
             Map<String, Object> wrapped = new HashMap<>();
             try {
               @SuppressWarnings("ConstantConditions")
-              StringValue input = StringValue.fromMap((Map<String, Object>)message);
-              IntValue output = api.newTracker(input);
+              TrackingId input = TrackingId.fromMap((Map<String, Object>)message);
+              TrackerId output = api.newTracker(input);
               wrapped.put("result", output.toMap());
             }
             catch (Error | RuntimeException exception) {

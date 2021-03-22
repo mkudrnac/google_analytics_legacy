@@ -64,7 +64,7 @@ class HitBuilderMessage {
   }
 }
 
-class StringValue {
+class TrackerGetValue {
   String value;
 
   Object encode() {
@@ -73,9 +73,9 @@ class StringValue {
     return pigeonMap;
   }
 
-  static StringValue decode(Object message) {
+  static TrackerGetValue decode(Object message) {
     final Map<Object, Object> pigeonMap = message as Map<Object, Object>;
-    return StringValue()
+    return TrackerGetValue()
       ..value = pigeonMap['value'] as String;
   }
 }
@@ -140,7 +140,45 @@ class TrackerDoubleValue {
   }
 }
 
-class IntValue {
+class TrackerSetScreenResolutionValue {
+  int trackerId;
+  int value1;
+  int value2;
+
+  Object encode() {
+    final Map<Object, Object> pigeonMap = <Object, Object>{};
+    pigeonMap['trackerId'] = trackerId;
+    pigeonMap['value1'] = value1;
+    pigeonMap['value2'] = value2;
+    return pigeonMap;
+  }
+
+  static TrackerSetScreenResolutionValue decode(Object message) {
+    final Map<Object, Object> pigeonMap = message as Map<Object, Object>;
+    return TrackerSetScreenResolutionValue()
+      ..trackerId = pigeonMap['trackerId'] as int
+      ..value1 = pigeonMap['value1'] as int
+      ..value2 = pigeonMap['value2'] as int;
+  }
+}
+
+class GABool {
+  bool value;
+
+  Object encode() {
+    final Map<Object, Object> pigeonMap = <Object, Object>{};
+    pigeonMap['value'] = value;
+    return pigeonMap;
+  }
+
+  static GABool decode(Object message) {
+    final Map<Object, Object> pigeonMap = message as Map<Object, Object>;
+    return GABool()
+      ..value = pigeonMap['value'] as bool;
+  }
+}
+
+class GAInt {
   int value;
 
   Object encode() {
@@ -149,10 +187,42 @@ class IntValue {
     return pigeonMap;
   }
 
-  static IntValue decode(Object message) {
+  static GAInt decode(Object message) {
     final Map<Object, Object> pigeonMap = message as Map<Object, Object>;
-    return IntValue()
+    return GAInt()
       ..value = pigeonMap['value'] as int;
+  }
+}
+
+class TrackerId {
+  int trackerId;
+
+  Object encode() {
+    final Map<Object, Object> pigeonMap = <Object, Object>{};
+    pigeonMap['trackerId'] = trackerId;
+    return pigeonMap;
+  }
+
+  static TrackerId decode(Object message) {
+    final Map<Object, Object> pigeonMap = message as Map<Object, Object>;
+    return TrackerId()
+      ..trackerId = pigeonMap['trackerId'] as int;
+  }
+}
+
+class TrackingId {
+  String trackingId;
+
+  Object encode() {
+    final Map<Object, Object> pigeonMap = <Object, Object>{};
+    pigeonMap['trackingId'] = trackingId;
+    return pigeonMap;
+  }
+
+  static TrackingId decode(Object message) {
+    final Map<Object, Object> pigeonMap = message as Map<Object, Object>;
+    return TrackingId()
+      ..trackingId = pigeonMap['trackingId'] as String;
   }
 }
 
@@ -249,7 +319,7 @@ class TrackerApi {
     }
   }
 
-  Future<StringValue> get(TrackerStringValue arg) async {
+  Future<TrackerGetValue> get(TrackerStringValue arg) async {
     final Object encoded = arg.encode();
     const BasicMessageChannel<Object> channel =
         BasicMessageChannel<Object>('dev.flutter.pigeon.TrackerApi.get', StandardMessageCodec());
@@ -268,7 +338,7 @@ class TrackerApi {
         details: error['details'],
       );
     } else {
-      return StringValue.decode(replyMap['result']);
+      return TrackerGetValue.decode(replyMap['result']);
     }
   }
 
@@ -548,7 +618,7 @@ class TrackerApi {
     }
   }
 
-  Future<void> setScreenResolution(IntValue arg) async {
+  Future<void> setScreenResolution(TrackerSetScreenResolutionValue arg) async {
     final Object encoded = arg.encode();
     const BasicMessageChannel<Object> channel =
         BasicMessageChannel<Object>('dev.flutter.pigeon.TrackerApi.setScreenResolution', StandardMessageCodec());
@@ -779,7 +849,120 @@ class GoogleAnalyticsApi {
     }
   }
 
-  Future<IntValue> newTracker(StringValue arg) async {
+  Future<void> setDryRun(GABool arg) async {
+    final Object encoded = arg.encode();
+    const BasicMessageChannel<Object> channel =
+        BasicMessageChannel<Object>('dev.flutter.pigeon.GoogleAnalyticsApi.setDryRun', StandardMessageCodec());
+    final Map<Object, Object> replyMap = await channel.send(encoded) as Map<Object, Object>;
+    if (replyMap == null) {
+      throw PlatformException(
+        code: 'channel-error',
+        message: 'Unable to establish connection on channel.',
+        details: null,
+      );
+    } else if (replyMap['error'] != null) {
+      final Map<Object, Object> error = (replyMap['error'] as Map<Object, Object>);
+      throw PlatformException(
+        code: (error['code'] as String),
+        message: error['message'] as String,
+        details: error['details'],
+      );
+    } else {
+      // noop
+    }
+  }
+
+  Future<GABool> isDryRunEnabled() async {
+    const BasicMessageChannel<Object> channel =
+        BasicMessageChannel<Object>('dev.flutter.pigeon.GoogleAnalyticsApi.isDryRunEnabled', StandardMessageCodec());
+    final Map<Object, Object> replyMap = await channel.send(null) as Map<Object, Object>;
+    if (replyMap == null) {
+      throw PlatformException(
+        code: 'channel-error',
+        message: 'Unable to establish connection on channel.',
+        details: null,
+      );
+    } else if (replyMap['error'] != null) {
+      final Map<Object, Object> error = (replyMap['error'] as Map<Object, Object>);
+      throw PlatformException(
+        code: (error['code'] as String),
+        message: error['message'] as String,
+        details: error['details'],
+      );
+    } else {
+      return GABool.decode(replyMap['result']);
+    }
+  }
+
+  Future<void> setAppOptOut(GABool arg) async {
+    final Object encoded = arg.encode();
+    const BasicMessageChannel<Object> channel =
+        BasicMessageChannel<Object>('dev.flutter.pigeon.GoogleAnalyticsApi.setAppOptOut', StandardMessageCodec());
+    final Map<Object, Object> replyMap = await channel.send(encoded) as Map<Object, Object>;
+    if (replyMap == null) {
+      throw PlatformException(
+        code: 'channel-error',
+        message: 'Unable to establish connection on channel.',
+        details: null,
+      );
+    } else if (replyMap['error'] != null) {
+      final Map<Object, Object> error = (replyMap['error'] as Map<Object, Object>);
+      throw PlatformException(
+        code: (error['code'] as String),
+        message: error['message'] as String,
+        details: error['details'],
+      );
+    } else {
+      // noop
+    }
+  }
+
+  Future<GABool> getAppOptOut() async {
+    const BasicMessageChannel<Object> channel =
+        BasicMessageChannel<Object>('dev.flutter.pigeon.GoogleAnalyticsApi.getAppOptOut', StandardMessageCodec());
+    final Map<Object, Object> replyMap = await channel.send(null) as Map<Object, Object>;
+    if (replyMap == null) {
+      throw PlatformException(
+        code: 'channel-error',
+        message: 'Unable to establish connection on channel.',
+        details: null,
+      );
+    } else if (replyMap['error'] != null) {
+      final Map<Object, Object> error = (replyMap['error'] as Map<Object, Object>);
+      throw PlatformException(
+        code: (error['code'] as String),
+        message: error['message'] as String,
+        details: error['details'],
+      );
+    } else {
+      return GABool.decode(replyMap['result']);
+    }
+  }
+
+  Future<void> setLocalDispatchPeriod(GAInt arg) async {
+    final Object encoded = arg.encode();
+    const BasicMessageChannel<Object> channel =
+        BasicMessageChannel<Object>('dev.flutter.pigeon.GoogleAnalyticsApi.setLocalDispatchPeriod', StandardMessageCodec());
+    final Map<Object, Object> replyMap = await channel.send(encoded) as Map<Object, Object>;
+    if (replyMap == null) {
+      throw PlatformException(
+        code: 'channel-error',
+        message: 'Unable to establish connection on channel.',
+        details: null,
+      );
+    } else if (replyMap['error'] != null) {
+      final Map<Object, Object> error = (replyMap['error'] as Map<Object, Object>);
+      throw PlatformException(
+        code: (error['code'] as String),
+        message: error['message'] as String,
+        details: error['details'],
+      );
+    } else {
+      // noop
+    }
+  }
+
+  Future<TrackerId> newTracker(TrackingId arg) async {
     final Object encoded = arg.encode();
     const BasicMessageChannel<Object> channel =
         BasicMessageChannel<Object>('dev.flutter.pigeon.GoogleAnalyticsApi.newTracker', StandardMessageCodec());
@@ -798,7 +981,7 @@ class GoogleAnalyticsApi {
         details: error['details'],
       );
     } else {
-      return IntValue.decode(replyMap['result']);
+      return TrackerId.decode(replyMap['result']);
     }
   }
 }
