@@ -1,15 +1,14 @@
 # google_analytics_legacy
 
-A new flutter plugin project.
+Flutter plugin for Google Analytics (360 not GA4).
 
 ## Getting Started
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```dart
+final ga = await GoogleAnalytics.instance;
+final tracker = await ga.newTracker("UA-xxxxxx");
+final screenView = ScreenViewBuilder();
+await tracker.setScreenName("Flutter");
+await tracker.send(screenView);
+```
 
