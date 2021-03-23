@@ -1,6 +1,12 @@
 import 'package:google_analytics_legacy/src/messages.dart';
 import 'package:google_analytics_legacy/tracker.dart';
 
+export 'package:google_analytics_legacy/hitBuilders.dart';
+export 'package:google_analytics_legacy/product.dart';
+export 'package:google_analytics_legacy/productAction.dart';
+export 'package:google_analytics_legacy/promotion.dart';
+export 'package:google_analytics_legacy/tracker.dart';
+
 class GoogleAnalytics {
   static GoogleAnalytics? _instance;
   static GoogleAnalyticsApi? _apiInstance;
