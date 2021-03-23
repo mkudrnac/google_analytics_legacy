@@ -1,11 +1,11 @@
 name: google_analytics_legacy
 description: Legacy Google Analytics plugin.
-version: 0.0.2
+version: 0.0.3
 author: Miroslav Kudrnac
 repository: https://github.com/mkudrnac/google_analytics_legacy
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
   flutter: ">=1.20.0"
 
 dependencies:

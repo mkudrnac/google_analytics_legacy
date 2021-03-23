@@ -2,14 +2,14 @@ import 'package:google_analytics_legacy/messages.dart';
 import 'package:google_analytics_legacy/tracker.dart';
 
 class GoogleAnalytics {
-  static GoogleAnalytics _instance;
-  static GoogleAnalyticsApi _apiInstance;
+  static GoogleAnalytics? _instance;
+  static GoogleAnalyticsApi? _apiInstance;
 
   static GoogleAnalyticsApi get _api {
     if (_apiInstance == null) {
       _apiInstance = GoogleAnalyticsApi();
     }
-    return _apiInstance;
+    return _apiInstance!;
   }
 
   static Future<GoogleAnalytics> get instance async {
@@ -17,7 +17,7 @@ class GoogleAnalytics {
       await _api.getInstance();
       _instance = GoogleAnalytics();
     }
-    return _instance;
+    return _instance!;
   }
 
   Future<void> setDryRun(final bool value) async {
@@ -26,7 +26,7 @@ class GoogleAnalytics {
 
   Future<bool> isDryRunEnabled() async {
     final result = await _api.isDryRunEnabled();
-    return result.value;
+    return result.value!;
   }
 
   Future<void> setAppOptOut(final bool value) async {
@@ -35,7 +35,7 @@ class GoogleAnalytics {
 
   Future<bool> getAppOptOut() async {
     final result = await _api.getAppOptOut();
-    return result.value;
+    return result.value!;
   }
 
   Future<void> setLocalDispatchPeriod(final int value) async {
@@ -44,6 +44,6 @@ class GoogleAnalytics {
 
   Future<Tracker> newTracker(final String trackingId) async {
     final tracker = await _api.newTracker(TrackingId()..trackingId = trackingId);
-    return Tracker(tracker.trackerId);
+    return Tracker(tracker.trackerId!);
   }
 }

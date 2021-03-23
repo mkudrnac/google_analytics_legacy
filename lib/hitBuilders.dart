@@ -55,7 +55,7 @@ class EventBuilder extends HitBuilder {
 
 class HitBuilder {
   final _map = HashMap<String, String>();
-  ProductAction _productAction;
+  ProductAction? _productAction;
   final _productImpressions = HashMap<String, List<Product>>();
   final _promotions = <Promotion>[];
   final _products = <Product>[];
@@ -83,23 +83,16 @@ class HitBuilder {
   }
 
   void addImpression(final Product product, final String impression) {
-    if (product == null) {
-      assert(false, "product should be non-null");
+    final item = _productImpressions[impression];
+    if (item != null) {
+      item.add(product);
     } else {
-      final key = impression ?? "";
-      if (!_productImpressions.containsKey(key)) {
-        _productImpressions[key] = [];
-      }
-      _productImpressions[key].add(product);
+      _productImpressions[impression] = [product];
     }
   }
 
   void addPromotion(final Promotion promotion) {
-    if (promotion == null) {
-      assert(false, "promotion should be non-null");
-    } else {
-      _promotions.add(promotion);
-    }
+    _promotions.add(promotion);
   }
 
   void setPromotionAction(final String var1) {
@@ -107,11 +100,7 @@ class HitBuilder {
   }
 
   void addProduct(final Product product) {
-    if (product == null) {
-      assert(false, "product should be non-null");
-    } else {
-      _products.add(product);
-    }
+    _products.add(product);
   }
 
   void setHitType(final String var1) {
@@ -119,11 +108,7 @@ class HitBuilder {
   }
 
   void set(final String paramName, final String value) {
-    if (paramName != null) {
-      _map[paramName] = value;
-    } else {
-      assert(false, "HitBuilder.set() called with a null paramName.");
-    }
+    _map[paramName] = value;
   }
 
   HashMap<String, String> build() {
@@ -132,8 +117,9 @@ class HitBuilder {
     final var2 = 1;
 
     // Product action
-    if (_productAction != null) {
-      buildMap.addAll(_productAction.build());
+    final productAction = _productAction;
+    if (productAction != null) {
+      buildMap.addAll(productAction.build());
     }
 
     // Promotions

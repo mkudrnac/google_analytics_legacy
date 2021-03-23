@@ -1,44 +1,45 @@
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:pigeon/pigeon_lib.dart';
 
 class TrackerGetValue {
-  String value;
+  late String value;
 }
 
 class TrackerStringValue {
-  int trackerId;
-  String value;
+  late int trackerId;
+  late String value;
 }
 
 class TrackerBoolValue {
-  int trackerId;
-  bool value;
+  late int trackerId;
+  late bool value;
 }
 
 class TrackerDoubleValue {
-  int trackerId;
-  double value;
+  late int trackerId;
+  late double value;
 }
 
 class TrackerIntValue {
-  int trackerId;
-  int value;
+  late int trackerId;
+  late int value;
 }
 
 class TrackerSetValue {
-  int trackerId;
-  String key;
-  String value;
+  late int trackerId;
+  late String key;
+  late String value;
 }
 
 class TrackerSetScreenResolutionValue {
-  int trackerId;
-  int value1;
-  int value2;
+  late int trackerId;
+  late int value1;
+  late int value2;
 }
 
 class HitBuilderMessage {
-  int trackerId;
-  String data;
+  late int trackerId;
+  late String data;
 }
 
 @HostApi()
@@ -72,19 +73,19 @@ abstract class TrackerApi {
 }
 
 class GABool {
-  bool value;
+  late bool value;
 }
 
 class GAInt {
-  int value;
+  late int value;
 }
 
 class TrackingId {
-  String trackingId;
+  late String trackingId;
 }
 
 class TrackerId {
-  int trackerId;
+  late int trackerId;
 }
 
 @HostApi()

@@ -32,7 +32,6 @@ class Product {
   }
 
   void _put(final String name, final String value) {
-    assert(name != null, "Name should be non-null");
     _params[name] = value;
   }
 }
