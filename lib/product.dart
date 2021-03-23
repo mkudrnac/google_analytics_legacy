@@ -1,6 +1,6 @@
 import 'dart:collection';
 
-import 'package:google_analytics_legacy/zzd.dart';
+import 'package:google_analytics_legacy/src/zzd.dart';
 
 class Product {
   final _params = HashMap<String, String>();

@@ -3,8 +3,8 @@ import 'dart:collection';
 import 'package:google_analytics_legacy/product.dart';
 import 'package:google_analytics_legacy/productAction.dart';
 import 'package:google_analytics_legacy/promotion.dart';
-import 'package:google_analytics_legacy/zzcz.dart';
-import 'package:google_analytics_legacy/zzd.dart';
+import 'package:google_analytics_legacy/src/zzcz.dart';
+import 'package:google_analytics_legacy/src/zzd.dart';
 
 class ScreenViewBuilder extends HitBuilder {
   ScreenViewBuilder() {

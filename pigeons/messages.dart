@@ -100,8 +100,8 @@ abstract class GoogleAnalyticsApi {
 }
 
 void configurePigeon(PigeonOptions opts) {
-  opts.dartOut = 'lib/messages.dart';
-  opts.dartTestOut = 'lib/test.dart';
+  opts.dartOut = 'lib/src/messages.dart';
+  opts.dartTestOut = 'lib/src/test.dart';
   opts.objcHeaderOut = 'ios/Classes/messages.h';
   opts.objcSourceOut = 'ios/Classes/messages.m';
   opts.objcOptions.prefix = 'GAL';

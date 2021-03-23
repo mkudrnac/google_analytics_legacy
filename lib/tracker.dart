@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:google_analytics_legacy/hitBuilders.dart';
-import 'package:google_analytics_legacy/messages.dart';
+import 'package:google_analytics_legacy/src/messages.dart';
 
 class Tracker {
   Tracker(this._trackedId);

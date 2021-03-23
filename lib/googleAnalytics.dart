@@ -1,4 +1,4 @@
-import 'package:google_analytics_legacy/messages.dart';
+import 'package:google_analytics_legacy/src/messages.dart';
 import 'package:google_analytics_legacy/tracker.dart';
 
 class GoogleAnalytics {
