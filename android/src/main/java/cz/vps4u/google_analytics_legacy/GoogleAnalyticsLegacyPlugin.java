@@ -121,6 +121,8 @@ public final class GoogleAnalyticsLegacyPlugin implements FlutterPlugin {
                 } catch (final JSONException e) {
                     Log.e("GoogleAnalyticsApi", e.toString());
                 }
+            } else {
+                throw new NullPointerException("GATracker is null");
             }
         }
 
