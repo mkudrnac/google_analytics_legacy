@@ -107,6 +107,10 @@ class HitBuilder {
     set("&t", var1);
   }
 
+  void setCurrency(final String currency) {
+    set("&cu", currency);
+  }
+
   void set(final String paramName, final String value) {
     _map[paramName] = value;
   }

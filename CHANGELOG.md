@@ -1,3 +1,7 @@
+## 0.0.6
+
+* testing release.
+
 ## 0.0.5
 
 * testing release.

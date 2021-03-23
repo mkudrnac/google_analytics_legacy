@@ -1,6 +1,6 @@
 name: google_analytics_legacy
 description: Legacy Google Analytics plugin.
-version: 0.0.5
+version: 0.0.6
 repository: https://github.com/mkudrnac/google_analytics_legacy
 
 environment:
