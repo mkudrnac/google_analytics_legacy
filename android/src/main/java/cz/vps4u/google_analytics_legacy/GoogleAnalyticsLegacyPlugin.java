@@ -75,11 +75,13 @@ public final class GoogleAnalyticsLegacyPlugin implements FlutterPlugin {
 
         @Override
         public Messages.TrackerId newTracker(Messages.TrackingId arg) {
-            trackerId += 1;
-            trackers.put(trackerId, ga.newTracker(arg.getTrackingId()));
-            final Messages.TrackerId tracker = new Messages.TrackerId();
-            tracker.setTrackerId(trackerId);
-            return tracker;
+            synchronized (this) {
+                trackerId += 1;
+                trackers.put(trackerId, ga.newTracker(arg.getTrackingId()));
+                final Messages.TrackerId tracker = new Messages.TrackerId();
+                tracker.setTrackerId(trackerId);
+                return tracker;
+            }
         }
     }
 
