@@ -54,6 +54,14 @@ static NSDictionary<NSString*, id>* wrapResult(NSDictionary *result, FlutterErro
 +(GALTrackerSetScreenResolutionValue*)fromMap:(NSDictionary*)dict;
 -(NSDictionary*)toMap;
 @end
+@interface GALTrackerGetClientIdValue ()
++(GALTrackerGetClientIdValue*)fromMap:(NSDictionary*)dict;
+-(NSDictionary*)toMap;
+@end
+@interface GALTrackerIdValue ()
++(GALTrackerIdValue*)fromMap:(NSDictionary*)dict;
+-(NSDictionary*)toMap;
+@end
 @interface GALGABool ()
 +(GALGABool*)fromMap:(NSDictionary*)dict;
 -(NSDictionary*)toMap;
@@ -216,6 +224,34 @@ static NSDictionary<NSString*, id>* wrapResult(NSDictionary *result, FlutterErro
 }
 -(NSDictionary*)toMap {
   return [NSDictionary dictionaryWithObjectsAndKeys:(self.trackerId ? self.trackerId : [NSNull null]), @"trackerId", (self.value1 ? self.value1 : [NSNull null]), @"value1", (self.value2 ? self.value2 : [NSNull null]), @"value2", nil];
+}
+@end
+
+@implementation GALTrackerGetClientIdValue
++(GALTrackerGetClientIdValue*)fromMap:(NSDictionary*)dict {
+  GALTrackerGetClientIdValue* result = [[GALTrackerGetClientIdValue alloc] init];
+  result.value = dict[@"value"];
+  if ((NSNull *)result.value == [NSNull null]) {
+    result.value = nil;
+  }
+  return result;
+}
+-(NSDictionary*)toMap {
+  return [NSDictionary dictionaryWithObjectsAndKeys:(self.value ? self.value : [NSNull null]), @"value", nil];
+}
+@end
+
+@implementation GALTrackerIdValue
++(GALTrackerIdValue*)fromMap:(NSDictionary*)dict {
+  GALTrackerIdValue* result = [[GALTrackerIdValue alloc] init];
+  result.trackerId = dict[@"trackerId"];
+  if ((NSNull *)result.trackerId == [NSNull null]) {
+    result.trackerId = nil;
+  }
+  return result;
+}
+-(NSDictionary*)toMap {
+  return [NSDictionary dictionaryWithObjectsAndKeys:(self.trackerId ? self.trackerId : [NSNull null]), @"trackerId", nil];
 }
 @end
 
@@ -593,6 +629,23 @@ void GALTrackerApiSetup(id<FlutterBinaryMessenger> binaryMessenger, id<GALTracke
         FlutterError *error;
         [api setViewportSize:input error:&error];
         callback(wrapResult(nil, error));
+      }];
+    }
+    else {
+      [channel setMessageHandler:nil];
+    }
+  }
+  {
+    FlutterBasicMessageChannel *channel =
+      [FlutterBasicMessageChannel
+        messageChannelWithName:@"dev.flutter.pigeon.TrackerApi.getClientId"
+        binaryMessenger:binaryMessenger];
+    if (api) {
+      [channel setMessageHandler:^(id _Nullable message, FlutterReply callback) {
+        GALTrackerIdValue *input = [GALTrackerIdValue fromMap:message];
+        FlutterError *error;
+        GALTrackerGetClientIdValue *output = [api getClientId:input error:&error];
+        callback(wrapResult([output toMap], error));
       }];
     }
     else {

@@ -162,6 +162,38 @@ class TrackerSetScreenResolutionValue {
   }
 }
 
+class TrackerGetClientIdValue {
+  String? value;
+
+  Object encode() {
+    final Map<Object?, Object?> pigeonMap = <Object?, Object?>{};
+    pigeonMap['value'] = value;
+    return pigeonMap;
+  }
+
+  static TrackerGetClientIdValue decode(Object message) {
+    final Map<Object?, Object?> pigeonMap = message as Map<Object?, Object?>;
+    return TrackerGetClientIdValue()
+      ..value = pigeonMap['value'] as String?;
+  }
+}
+
+class TrackerIdValue {
+  int? trackerId;
+
+  Object encode() {
+    final Map<Object?, Object?> pigeonMap = <Object?, Object?>{};
+    pigeonMap['trackerId'] = trackerId;
+    return pigeonMap;
+  }
+
+  static TrackerIdValue decode(Object message) {
+    final Map<Object?, Object?> pigeonMap = message as Map<Object?, Object?>;
+    return TrackerIdValue()
+      ..trackerId = pigeonMap['trackerId'] as int?;
+  }
+}
+
 class GABool {
   bool? value;
 
@@ -661,6 +693,29 @@ class TrackerApi {
       );
     } else {
       // noop
+    }
+  }
+
+  Future<TrackerGetClientIdValue> getClientId(TrackerIdValue arg) async {
+    final Object encoded = arg.encode();
+    const BasicMessageChannel<Object?> channel =
+        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.getClientId', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    if (replyMap == null) {
+      throw PlatformException(
+        code: 'channel-error',
+        message: 'Unable to establish connection on channel.',
+        details: null,
+      );
+    } else if (replyMap['error'] != null) {
+      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      throw PlatformException(
+        code: (error['code'] as String?)!,
+        message: error['message'] as String?,
+        details: error['details'],
+      );
+    } else {
+      return TrackerGetClientIdValue.decode(replyMap['result']!);
     }
   }
 

@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @class GALTrackerSetValue;
 @class GALTrackerDoubleValue;
 @class GALTrackerSetScreenResolutionValue;
+@class GALTrackerGetClientIdValue;
+@class GALTrackerIdValue;
 @class GALGABool;
 @class GALGAInt;
 @class GALTrackerId;
@@ -61,6 +63,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong, nullable) NSNumber * value2;
 @end
 
+@interface GALTrackerGetClientIdValue : NSObject
+@property(nonatomic, copy, nullable) NSString * value;
+@end
+
+@interface GALTrackerIdValue : NSObject
+@property(nonatomic, strong, nullable) NSNumber * trackerId;
+@end
+
 @interface GALGABool : NSObject
 @property(nonatomic, strong, nullable) NSNumber * value;
 @end
@@ -97,6 +107,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)setScreenColors:(GALTrackerStringValue*)input error:(FlutterError *_Nullable *_Nonnull)error;
 -(void)setScreenResolution:(GALTrackerSetScreenResolutionValue*)input error:(FlutterError *_Nullable *_Nonnull)error;
 -(void)setViewportSize:(GALTrackerStringValue*)input error:(FlutterError *_Nullable *_Nonnull)error;
+-(nullable GALTrackerGetClientIdValue *)getClientId:(GALTrackerIdValue*)input error:(FlutterError *_Nullable *_Nonnull)error;
 -(void)setClientId:(GALTrackerStringValue*)input error:(FlutterError *_Nullable *_Nonnull)error;
 -(void)setAppName:(GALTrackerStringValue*)input error:(FlutterError *_Nullable *_Nonnull)error;
 -(void)setAppId:(GALTrackerStringValue*)input error:(FlutterError *_Nullable *_Nonnull)error;

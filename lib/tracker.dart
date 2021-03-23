@@ -163,6 +163,13 @@ class Tracker {
     );
   }
 
+  Future<String> getClientId() async {
+    final result = await _api.getClientId(
+      TrackerIdValue()..trackerId = _trackedId,
+    );
+    return result.value!;
+  }
+
   Future<void> setClientId(final String value) async {
     return _api.setClientId(
       TrackerStringValue()

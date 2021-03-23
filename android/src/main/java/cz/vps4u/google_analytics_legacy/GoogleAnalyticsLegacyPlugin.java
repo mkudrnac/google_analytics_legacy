@@ -250,6 +250,18 @@ public final class GoogleAnalyticsLegacyPlugin implements FlutterPlugin {
         }
 
         @Override
+        public Messages.TrackerGetClientIdValue getClientId(Messages.TrackerIdValue arg) {
+            final Messages.TrackerGetClientIdValue value = new Messages.TrackerGetClientIdValue();
+            final Tracker tracker = trackers.get(arg.getTrackerId());
+            if (tracker != null) {
+                value.setValue(tracker.get("&cid"));
+            } else {
+                value.setValue("");
+            }
+            return value;
+        }
+
+        @Override
         public void setClientId(Messages.TrackerStringValue arg) {
             final Tracker tracker = trackers.get(arg.getTrackerId());
             if (tracker != null) {

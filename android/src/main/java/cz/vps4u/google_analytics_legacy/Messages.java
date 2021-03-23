@@ -230,6 +230,44 @@ public class Messages {
   }
 
   /** Generated class from Pigeon that represents data sent in messages. */
+  public static class TrackerGetClientIdValue {
+    private String value;
+    public String getValue() { return value; }
+    public void setValue(String setterArg) { this.value = setterArg; }
+
+    Map<String, Object> toMap() {
+      Map<String, Object> toMapResult = new HashMap<>();
+      toMapResult.put("value", value);
+      return toMapResult;
+    }
+    static TrackerGetClientIdValue fromMap(Map<String, Object> map) {
+      TrackerGetClientIdValue fromMapResult = new TrackerGetClientIdValue();
+      Object value = map.get("value");
+      fromMapResult.value = (String)value;
+      return fromMapResult;
+    }
+  }
+
+  /** Generated class from Pigeon that represents data sent in messages. */
+  public static class TrackerIdValue {
+    private Long trackerId;
+    public Long getTrackerId() { return trackerId; }
+    public void setTrackerId(Long setterArg) { this.trackerId = setterArg; }
+
+    Map<String, Object> toMap() {
+      Map<String, Object> toMapResult = new HashMap<>();
+      toMapResult.put("trackerId", trackerId);
+      return toMapResult;
+    }
+    static TrackerIdValue fromMap(Map<String, Object> map) {
+      TrackerIdValue fromMapResult = new TrackerIdValue();
+      Object trackerId = map.get("trackerId");
+      fromMapResult.trackerId = (trackerId == null) ? null : ((trackerId instanceof Integer) ? (Integer)trackerId : (Long)trackerId);
+      return fromMapResult;
+    }
+  }
+
+  /** Generated class from Pigeon that represents data sent in messages. */
   public static class GABool {
     private Boolean value;
     public Boolean getValue() { return value; }
@@ -326,6 +364,7 @@ public class Messages {
     void setScreenColors(TrackerStringValue arg);
     void setScreenResolution(TrackerSetScreenResolutionValue arg);
     void setViewportSize(TrackerStringValue arg);
+    TrackerGetClientIdValue getClientId(TrackerIdValue arg);
     void setClientId(TrackerStringValue arg);
     void setAppName(TrackerStringValue arg);
     void setAppId(TrackerStringValue arg);
@@ -725,6 +764,27 @@ public class Messages {
               TrackerStringValue input = TrackerStringValue.fromMap((Map<String, Object>)message);
               api.setViewportSize(input);
               wrapped.put("result", null);
+            }
+            catch (Error | RuntimeException exception) {
+              wrapped.put("error", wrapError(exception));
+            }
+            reply.reply(wrapped);
+          });
+        } else {
+          channel.setMessageHandler(null);
+        }
+      }
+      {
+        BasicMessageChannel<Object> channel =
+            new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.TrackerApi.getClientId", new StandardMessageCodec());
+        if (api != null) {
+          channel.setMessageHandler((message, reply) -> {
+            Map<String, Object> wrapped = new HashMap<>();
+            try {
+              @SuppressWarnings("ConstantConditions")
+              TrackerIdValue input = TrackerIdValue.fromMap((Map<String, Object>)message);
+              TrackerGetClientIdValue output = api.getClientId(input);
+              wrapped.put("result", output.toMap());
             }
             catch (Error | RuntimeException exception) {
               wrapped.put("error", wrapError(exception));

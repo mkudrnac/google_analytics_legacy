@@ -68,10 +68,10 @@ class HitBuilder {
     set("&ni", ZZCZ.zzc(var1));
   }
 
-  void setCampaignParamsFromUrl(final String var1) {}
+  void setCampaignParamsFromUrl(final String url) {}
 
-  void setCustomDimension(final int var1, final String var2) {
-    set(ZZD.zzd(var1), var2);
+  void setCustomDimension(final int index, final String value) {
+    set(ZZD.zzd(index), value);
   }
 
   void setCustomMetric(final int var1, final double var2) {

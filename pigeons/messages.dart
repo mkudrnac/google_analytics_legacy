@@ -1,7 +1,15 @@
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:pigeon/pigeon_lib.dart';
 
+class TrackerIdValue {
+  late int trackerId;
+}
+
 class TrackerGetValue {
+  late String value;
+}
+
+class TrackerGetClientIdValue {
   late String value;
 }
 
@@ -63,6 +71,7 @@ abstract class TrackerApi {
   void setScreenColors(TrackerStringValue value);
   void setScreenResolution(TrackerSetScreenResolutionValue value);
   void setViewportSize(TrackerStringValue value);
+  TrackerGetClientIdValue getClientId(TrackerIdValue value);
   void setClientId(TrackerStringValue value);
   void setAppName(TrackerStringValue value);
   void setAppId(TrackerStringValue value);

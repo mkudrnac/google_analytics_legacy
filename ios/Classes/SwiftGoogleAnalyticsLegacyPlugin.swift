@@ -181,6 +181,16 @@ private class TrackerApiHandler: GALTrackerApi {
         tracker.set(kGAIViewportSize, value: input.value)
     }
     
+    func getClientId(_ input: GALTrackerIdValue, error: AutoreleasingUnsafeMutablePointer<FlutterError?>) -> GALTrackerGetClientIdValue? {
+        let result = GALTrackerGetClientIdValue()
+        guard let tracker = tracker(input.trackerId) else {
+            result.value = ""
+            return result
+        }
+        result.value = tracker.get(kGAIClientId)
+        return result
+    }
+    
     func setClientId(_ input: GALTrackerStringValue, error: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
         guard let tracker = tracker(input.trackerId) else { return }
         tracker.set(kGAIClientId, value: input.value)
