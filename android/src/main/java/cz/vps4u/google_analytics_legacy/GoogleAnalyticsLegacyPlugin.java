@@ -119,7 +119,7 @@ public final class GoogleAnalyticsLegacyPlugin implements FlutterPlugin {
                     final Map<String, String> map = JsonUtils.toMap(json);
                     tracker.send(map);
                 } catch (final JSONException e) {
-                    Log.e("GoogleAnalyticsApi", e.toString());
+                    Log.e("TrackerApiHandler", e.toString());
                 }
             } else {
                 throw new NullPointerException("GATracker is null");

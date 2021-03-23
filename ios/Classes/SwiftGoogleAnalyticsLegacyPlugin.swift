@@ -18,7 +18,7 @@ private class GoogleAnalyticsApiHandler: GALGoogleAnalyticsApi {
     
     func getInstance(_ error: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
         guard let _ = GAI.sharedInstance() else {
-            error.pointee = FlutterError(code: "GAL", message: "Google Analytics not configured correctly", details: nil)
+            error.pointee = FlutterError(code: "GoogleAnalyticsApiHandler", message: "Google Analytics not configured correctly", details: nil)
             return
         }
         gai.logger.logLevel = .verbose
@@ -26,7 +26,7 @@ private class GoogleAnalyticsApiHandler: GALGoogleAnalyticsApi {
 
     func setDryRun(_ value: GALGABool, error: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
         guard let value = value.value?.boolValue else {
-            error.pointee = FlutterError(code: "GAL", message: "setDryRun: value is nil", details: nil)
+            error.pointee = FlutterError(code: "GoogleAnalyticsApiHandler", message: "setDryRun: value is nil", details: nil)
             return
         }
         gai.dryRun = value
@@ -40,7 +40,7 @@ private class GoogleAnalyticsApiHandler: GALGoogleAnalyticsApi {
 
     func setAppOptOut(_ value: GALGABool, error: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
         guard let value = value.value?.boolValue else {
-            error.pointee = FlutterError(code: "GAL", message: "setAppOptOut: value is nil", details: nil)
+            error.pointee = FlutterError(code: "GoogleAnalyticsApiHandler", message: "setAppOptOut: value is nil", details: nil)
             return
         }
         gai.optOut = value
@@ -54,7 +54,7 @@ private class GoogleAnalyticsApiHandler: GALGoogleAnalyticsApi {
 
     func setLocalDispatchPeriod(_ value: GALGAInt, error: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
         guard let value = value.value?.doubleValue else {
-            error.pointee = FlutterError(code: "GAL", message: "setLocalDispatchPeriod: value is nil", details: nil)
+            error.pointee = FlutterError(code: "GoogleAnalyticsApiHandler", message: "setLocalDispatchPeriod: value is nil", details: nil)
             return
         }
         gai.dispatchInterval = value
@@ -86,7 +86,7 @@ private class TrackerApiHandler: GALTrackerApi {
 
     func enableExceptionReporting(_ input: GALTrackerBoolValue, error: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
         guard let value = input.value?.boolValue else {
-            error.pointee = FlutterError(code: "GAL", message: "enableExceptionReporting: value is nil", details: nil)
+            error.pointee = FlutterError(code: "TrackerApiHandler", message: "enableExceptionReporting: value is nil", details: nil)
             return
         }
         gai.trackUncaughtExceptions = value
@@ -105,15 +105,15 @@ private class TrackerApiHandler: GALTrackerApi {
             do {
                 let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String : String]
                 guard let tracker = tracker(input.trackerId) else {
-                    returnError.pointee = FlutterError(code: "GAL", message: "GAITracker is nil", details: nil)
+                    returnError.pointee = FlutterError(code: "TrackerApiHandler", message: "Tracker is nil", details: nil)
                     return
                 }
                 tracker.send(json)
             } catch {
-                returnError.pointee = FlutterError(code: "GAL", message: error.localizedDescription, details: nil)
+                returnError.pointee = FlutterError(code: "TrackerApiHandler", message: error.localizedDescription, details: nil)
             }
         } else {
-            returnError.pointee = FlutterError(code: "GAL", message: "Input error: \(input.data)", details: nil)
+            returnError.pointee = FlutterError(code: "TrackerApiHandler", message: "Input error: \(input.data)", details: nil)
         }
     }
     
@@ -226,7 +226,7 @@ private class TrackerApiHandler: GALTrackerApi {
     func enableAdvertisingIdCollection(_ input: GALTrackerBoolValue, error: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
         guard let tracker = tracker(input.trackerId) else { return }
         guard let value = input.value?.boolValue else {
-            error.pointee = FlutterError(code: "GAL", message: "enableAdvertisingIdCollection: value is nil", details: nil)
+            error.pointee = FlutterError(code: "TrackerApiHandler", message: "enableAdvertisingIdCollection: value is nil", details: nil)
             return
         }
         tracker.allowIDFACollection = value
