@@ -104,7 +104,10 @@ private class TrackerApiHandler: GALTrackerApi {
         if let data = input.data?.data(using: .utf8) {
             do {
                 let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String : String]
-                guard let tracker = tracker(input.trackerId) else { return }
+                guard let tracker = tracker(input.trackerId) else {
+                    returnError.pointee = FlutterError(code: "GAL", message: "GAITracker is nil", details: nil)
+                    return
+                }
                 tracker.send(json)
             } catch {
                 returnError.pointee = FlutterError(code: "GAL", message: error.localizedDescription, details: nil)
