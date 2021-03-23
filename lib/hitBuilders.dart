@@ -117,8 +117,7 @@ class HitBuilder {
 
   HashMap<String, String> build() {
     // All key/values
-    final buildMap = _map;
-    final var2 = 1;
+    final buildMap = HashMap<String, String>.from(_map);
 
     // Product action
     final productAction = _productAction;
@@ -126,26 +125,29 @@ class HitBuilder {
       buildMap.addAll(productAction.build());
     }
 
-    // Promotions
-    for (final promotion in _promotions) {
-      buildMap.addAll(promotion.build(ZZD.zzj(var2)));
-    }
+    // Promotion
+    _promotions.asMap().forEach((index, value) {
+      buildMap.addAll(value.build(ZZD.zzj(index + 1)));
+    });
 
     // Products
-    for (final product in _products) {
-      buildMap.addAll(product.build(ZZD.zzh(var2)));
-    }
+    _products.asMap().forEach((index, value) {
+      buildMap.addAll(value.build(ZZD.zzh(index + 1)));
+    });
 
     // Product impressions
+    var var2 = 1;
     for (final productImpession in _productImpressions.entries) {
       final var6 = ZZD.zzm(var2);
-      final var7 = 1;
+      var var7 = 1;
       for (final product in productImpession.value) {
         final var10002 = var6 + ZZD.zzl(var7);
         buildMap.addAll(product.build(var10002));
+        var7 += 1;
       }
       final var10001 = var6 + "nm";
       buildMap[var10001] = productImpession.key;
+      var2 += 1;
     }
 
     return buildMap;
