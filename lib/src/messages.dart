@@ -75,8 +75,7 @@ class TrackerGetValue {
 
   static TrackerGetValue decode(Object message) {
     final Map<Object?, Object?> pigeonMap = message as Map<Object?, Object?>;
-    return TrackerGetValue()
-      ..value = pigeonMap['value'] as String?;
+    return TrackerGetValue()..value = pigeonMap['value'] as String?;
   }
 }
 
@@ -173,8 +172,7 @@ class TrackerGetClientIdValue {
 
   static TrackerGetClientIdValue decode(Object message) {
     final Map<Object?, Object?> pigeonMap = message as Map<Object?, Object?>;
-    return TrackerGetClientIdValue()
-      ..value = pigeonMap['value'] as String?;
+    return TrackerGetClientIdValue()..value = pigeonMap['value'] as String?;
   }
 }
 
@@ -189,8 +187,7 @@ class TrackerIdValue {
 
   static TrackerIdValue decode(Object message) {
     final Map<Object?, Object?> pigeonMap = message as Map<Object?, Object?>;
-    return TrackerIdValue()
-      ..trackerId = pigeonMap['trackerId'] as int?;
+    return TrackerIdValue()..trackerId = pigeonMap['trackerId'] as int?;
   }
 }
 
@@ -205,8 +202,7 @@ class GABool {
 
   static GABool decode(Object message) {
     final Map<Object?, Object?> pigeonMap = message as Map<Object?, Object?>;
-    return GABool()
-      ..value = pigeonMap['value'] as bool?;
+    return GABool()..value = pigeonMap['value'] as bool?;
   }
 }
 
@@ -221,8 +217,7 @@ class GAInt {
 
   static GAInt decode(Object message) {
     final Map<Object?, Object?> pigeonMap = message as Map<Object?, Object?>;
-    return GAInt()
-      ..value = pigeonMap['value'] as int?;
+    return GAInt()..value = pigeonMap['value'] as int?;
   }
 }
 
@@ -237,8 +232,7 @@ class TrackerId {
 
   static TrackerId decode(Object message) {
     final Map<Object?, Object?> pigeonMap = message as Map<Object?, Object?>;
-    return TrackerId()
-      ..trackerId = pigeonMap['trackerId'] as int?;
+    return TrackerId()..trackerId = pigeonMap['trackerId'] as int?;
   }
 }
 
@@ -253,8 +247,7 @@ class TrackingId {
 
   static TrackingId decode(Object message) {
     final Map<Object?, Object?> pigeonMap = message as Map<Object?, Object?>;
-    return TrackingId()
-      ..trackingId = pigeonMap['trackingId'] as String?;
+    return TrackingId()..trackingId = pigeonMap['trackingId'] as String?;
   }
 }
 
@@ -307,8 +300,8 @@ class TrackerApi {
 
   Future<void> enableAutoActivityTracking(TrackerBoolValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.enableAutoActivityTracking', StandardMessageCodec());
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.enableAutoActivityTracking', StandardMessageCodec());
     final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
@@ -859,8 +852,8 @@ class TrackerApi {
 
   Future<void> enableAdvertisingIdCollection(TrackerBoolValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.enableAdvertisingIdCollection', StandardMessageCodec());
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.enableAdvertisingIdCollection', StandardMessageCodec());
     final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
@@ -996,8 +989,8 @@ class GoogleAnalyticsApi {
 
   Future<void> setLocalDispatchPeriod(GAInt arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.GoogleAnalyticsApi.setLocalDispatchPeriod', StandardMessageCodec());
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.GoogleAnalyticsApi.setLocalDispatchPeriod', StandardMessageCodec());
     final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(

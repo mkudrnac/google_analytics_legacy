@@ -13,26 +13,26 @@ class ProductAction {
 
   final _params = HashMap<String, String>();
 
-  ProductAction(final String var1) {
-    _put("&pa", var1);
+  ProductAction(final String action) {
+    _put("&pa", action);
   }
 
-  set transactionId(final String var1) => _put("&ti", var1);
-  set transactionAffiliation(final String var1) => _put("&ta", var1);
-  set transactionRevenue(final double var1) => _put("&tr", var1.toString());
-  set transactionTax(final double var1) => _put("&tt", var1.toString());
-  set transactionShipping(final double var1) => _put("&ts", var1.toString());
-  set transactionCouponCode(final String var1) => _put("&tcc", var1);
-  set checkoutStep(final int var1) => _put("&cos", var1.toString());
-  set checkoutOptions(final String var1) => _put("&col", var1);
-  set productActionList(final String var1) => _put("&pal", var1);
-  set productListSource(final String var1) => _put("&pls", var1);
+  set transactionId(final String? value) => _put("&ti", value);
+  set transactionAffiliation(final String? value) => _put("&ta", value);
+  set transactionRevenue(final double? value) => _put("&tr", value.toString());
+  set transactionTax(final double? value) => _put("&tt", value.toString());
+  set transactionShipping(final double? value) => _put("&ts", value.toString());
+  set transactionCouponCode(final String? value) => _put("&tcc", value);
+  set checkoutStep(final int? value) => _put("&cos", value.toString());
+  set checkoutOptions(final String? value) => _put("&col", value);
+  set productActionList(final String? value) => _put("&pal", value);
+  set productListSource(final String? value) => _put("&pls", value);
 
   HashMap<String, String> build() {
     return _params;
   }
 
-  void _put(final String name, final String value) {
-    _params[name] = value;
+  void _put(final String name, final String? value) {
+    _params[name] = value != null ? Uri.encodeComponent(value) : "null";
   }
 }

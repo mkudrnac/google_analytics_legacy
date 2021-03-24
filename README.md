@@ -1,10 +1,15 @@
 # google_analytics_legacy
 
-Flutter plugin for Google Analytics (360 not GA4).
+Flutter plugin for sending events to Google Analytics (Universal Analytics).
 
-## Getting Started
+## Setup
 
+To use this plugin, add google_analytics_legacy as a dependency in your pubspec.yaml file.
+
+## Example
 ```dart
+import 'package:google_analytics_legacy/googleAnalytics.dart';
+
 final ga = await GoogleAnalytics.instance;
 final tracker = await ga.newTracker("UA-xxxxxx");
 final screenView = ScreenViewBuilder();

@@ -17,8 +17,8 @@ class ExceptionBuilder extends HitBuilder {
     set("&t", "exception");
   }
 
-  set description(final String var1) => set("&exd", var1);
-  set fatal(final bool var1) => set("&exf", ZZCZ.zzc(var1));
+  set description(final String value) => set("&exd", value);
+  set fatal(final bool value) => set("&exf", ZZCZ.zzc(value));
 }
 
 class TimingBuilder extends HitBuilder {
@@ -26,10 +26,10 @@ class TimingBuilder extends HitBuilder {
     set("&t", "timing");
   }
 
-  set variable(final String var1) => set("&utv", var1);
-  set value(final int var1) => set("&utt", var1.toString());
-  set category(final String var1) => set("&utc", var1);
-  set label(final String var1) => set("&utl", var1);
+  set variable(final String? value) => set("&utv", value);
+  set value(final int? value) => set("&utt", value?.toString());
+  set category(final String? value) => set("&utc", value);
+  set label(final String? value) => set("&utl", value);
 }
 
 class SocialBuilder extends HitBuilder {
@@ -37,9 +37,9 @@ class SocialBuilder extends HitBuilder {
     set("&t", "social");
   }
 
-  set network(final String var1) => set("&sn", var1);
-  set action(final String var1) => set("&sa", var1);
-  set target(final String var1) => set("&st", var1);
+  set network(final String? value) => set("&sn", value);
+  set action(final String? value) => set("&sa", value);
+  set target(final String? value) => set("&st", value);
 }
 
 class EventBuilder extends HitBuilder {
@@ -47,10 +47,10 @@ class EventBuilder extends HitBuilder {
     set("&t", "event");
   }
 
-  set category(final String var1) => set("&ec", var1);
-  set action(final String var1) => set("&ea", var1);
-  set label(final String var1) => set("&el", var1);
-  set value(final int var1) => set("&ev", var1.toString());
+  set category(final String? value) => set("&ec", value);
+  set action(final String? value) => set("&ea", value);
+  set label(final String? value) => set("&el", value);
+  set value(final int? value) => set("&ev", value?.toString());
 }
 
 class HitBuilder {
@@ -64,21 +64,21 @@ class HitBuilder {
     set("&sc", "start");
   }
 
-  void setNonInteraction(final bool var1) {
-    set("&ni", ZZCZ.zzc(var1));
+  void setNonInteraction(final bool value) {
+    set("&ni", ZZCZ.zzc(value));
   }
 
   void setCampaignParamsFromUrl(final String url) {}
 
-  void setCustomDimension(final int index, final String value) {
+  void setCustomDimension(final int index, final String? value) {
     set(ZZD.zzd(index), value);
   }
 
-  void setCustomMetric(final int var1, final double var2) {
-    set(ZZD.zzf(var1), var2.toString());
+  void setCustomMetric(final int index, final double? value) {
+    set(ZZD.zzf(index), value?.toString());
   }
 
-  void setProductAction(final ProductAction productAction) {
+  void setProductAction(final ProductAction? productAction) {
     _productAction = productAction;
   }
 
@@ -95,24 +95,24 @@ class HitBuilder {
     _promotions.add(promotion);
   }
 
-  void setPromotionAction(final String var1) {
-    set("&promoa", var1);
+  void setPromotionAction(final String? action) {
+    set("&promoa", action);
   }
 
   void addProduct(final Product product) {
     _products.add(product);
   }
 
-  void setHitType(final String var1) {
-    set("&t", var1);
+  void setHitType(final String? type) {
+    set("&t", type);
   }
 
-  void setCurrency(final String currency) {
+  void setCurrency(final String? currency) {
     set("&cu", currency);
   }
 
-  void set(final String paramName, final String value) {
-    _map[paramName] = value;
+  void set(final String paramName, final String? value) {
+    _map[paramName] = value != null ? Uri.encodeComponent(value) : "null";
   }
 
   HashMap<String, String> build() {
@@ -136,18 +136,16 @@ class HitBuilder {
     });
 
     // Product impressions
-    var var2 = 1;
+    var impressionIndex = 1;
     for (final productImpession in _productImpressions.entries) {
-      final var6 = ZZD.zzm(var2);
-      var var7 = 1;
-      for (final product in productImpession.value) {
-        final var10002 = var6 + ZZD.zzl(var7);
-        buildMap.addAll(product.build(var10002));
-        var7 += 1;
-      }
-      final var10001 = var6 + "nm";
-      buildMap[var10001] = productImpession.key;
-      var2 += 1;
+      final impressionPrefix = ZZD.zzm(impressionIndex);
+      productImpession.value.asMap().forEach((index, product) {
+        final productPrefix = impressionPrefix + ZZD.zzl(index);
+        buildMap.addAll(product.build(productPrefix));
+      });
+      final impressionKey = impressionPrefix + "nm";
+      buildMap[impressionKey] = productImpession.key;
+      impressionIndex += 1;
     }
 
     return buildMap;

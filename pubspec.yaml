@@ -1,6 +1,6 @@
 name: google_analytics_legacy
-description: Legacy Google Analytics plugin.
-version: 0.0.6
+description: Flutter plugin for sending events to Google Analytics (Universal Analytics).
+version: 0.0.7
 repository: https://github.com/mkudrnac/google_analytics_legacy
 
 environment:
