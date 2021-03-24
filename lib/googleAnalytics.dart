@@ -26,6 +26,10 @@ class GoogleAnalytics {
     return _instance!;
   }
 
+  Future<void> setLogLevelVerbose() async {
+    return _api.setLogLevelVerbose();
+  }
+
   Future<void> setDryRun(final bool value) async {
     return _api.setDryRun(
       GABool()..value = value,
