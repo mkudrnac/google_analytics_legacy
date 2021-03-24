@@ -21,6 +21,9 @@ private class GoogleAnalyticsApiHandler: GALGoogleAnalyticsApi {
             error.pointee = FlutterError(code: "GoogleAnalyticsApiHandler", message: "Google Analytics not configured correctly", details: nil)
             return
         }
+    }
+    
+    func setLogLevelVerbose(_ error: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
         gai.logger.logLevel = .verbose
     }
 

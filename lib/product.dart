@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:google_analytics_legacy/src/helper.dart';
 import 'package:google_analytics_legacy/src/zzd.dart';
 
 class Product {
@@ -26,12 +27,12 @@ class Product {
   HashMap<String, String> build(final String prefix) {
     final buildMap = HashMap<String, String>();
     for (final param in _params.entries) {
-      buildMap[prefix + param.key] = param.value;
+      buildMap[prefix + param.key] = Helper.encodeValue(param.value);
     }
     return buildMap;
   }
 
   void _put(final String name, final String? value) {
-    _params[name] = value != null ? Uri.encodeComponent(value) : "null";
+    _params[name] = value ?? "null";
   }
 }

@@ -121,6 +121,7 @@ extern void GALTrackerApiSetup(id<FlutterBinaryMessenger> binaryMessenger, id<GA
 
 @protocol GALGoogleAnalyticsApi
 -(void)getInstance:(FlutterError *_Nullable *_Nonnull)error;
+-(void)setLogLevelVerbose:(FlutterError *_Nullable *_Nonnull)error;
 -(void)setDryRun:(GALGABool*)input error:(FlutterError *_Nullable *_Nonnull)error;
 -(nullable GALGABool *)isDryRunEnabled:(FlutterError *_Nullable *_Nonnull)error;
 -(void)setAppOptOut:(GALGABool*)input error:(FlutterError *_Nullable *_Nonnull)error;

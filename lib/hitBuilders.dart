@@ -3,7 +3,7 @@ import 'dart:collection';
 import 'package:google_analytics_legacy/product.dart';
 import 'package:google_analytics_legacy/productAction.dart';
 import 'package:google_analytics_legacy/promotion.dart';
-import 'package:google_analytics_legacy/src/zzcz.dart';
+import 'package:google_analytics_legacy/src/helper.dart';
 import 'package:google_analytics_legacy/src/zzd.dart';
 
 class ScreenViewBuilder extends HitBuilder {
@@ -17,8 +17,8 @@ class ExceptionBuilder extends HitBuilder {
     set("&t", "exception");
   }
 
-  set description(final String value) => set("&exd", value);
-  set fatal(final bool value) => set("&exf", ZZCZ.zzc(value));
+  set description(final String? value) => set("&exd", value);
+  set fatal(final bool? value) => set("&exf", Helper.convertBool(value));
 }
 
 class TimingBuilder extends HitBuilder {
@@ -64,11 +64,31 @@ class HitBuilder {
     set("&sc", "start");
   }
 
-  void setNonInteraction(final bool value) {
-    set("&ni", ZZCZ.zzc(value));
+  void setNonInteraction(final bool? value) {
+    set("&ni", Helper.convertBool(value));
   }
 
-  void setCampaignParamsFromUrl(final String url) {}
+  void setCampaignParamsFromUrl(final String? url) {
+    if (url != null && url.isNotEmpty) {
+      final uri = Uri.parse(url);
+      final setCampaignParam = (final String key, final String? value) {
+        if (value != null) {
+          set(key, value);
+        }
+      };
+      setCampaignParam("&cc", uri.queryParameters["utm_content"]);
+      setCampaignParam("&cm", uri.queryParameters["utm_medium"]);
+      setCampaignParam("&cn", uri.queryParameters["utm_campaign"]);
+      setCampaignParam("&cs", uri.queryParameters["utm_source"]);
+      setCampaignParam("&ck", uri.queryParameters["utm_term"]);
+      setCampaignParam("&ci", uri.queryParameters["utm_id"]);
+      setCampaignParam("&anid", uri.queryParameters["anid"]);
+      setCampaignParam("&gclid", uri.queryParameters["gclid"]);
+      setCampaignParam("&dclid", uri.queryParameters["dclid"]);
+      setCampaignParam("&aclid", uri.queryParameters["aclid"]);
+      setCampaignParam("&gmob_t", uri.queryParameters["gmob_t"]);
+    }
+  }
 
   void setCustomDimension(final int index, final String? value) {
     set(ZZD.zzd(index), value);
@@ -112,12 +132,14 @@ class HitBuilder {
   }
 
   void set(final String paramName, final String? value) {
-    _map[paramName] = value != null ? Uri.encodeComponent(value) : "null";
+    _map[paramName] = value ?? "null";
   }
 
   HashMap<String, String> build() {
     // All key/values
-    final buildMap = HashMap<String, String>.from(_map);
+    final buildMap = HashMap<String, String>.from(
+      _map.map((key, value) => MapEntry(key, Helper.encodeValue(value))),
+    );
 
     // Product action
     final productAction = _productAction;

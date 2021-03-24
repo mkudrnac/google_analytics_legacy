@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.Logger;
 import com.google.android.gms.analytics.Tracker;
 
 import org.json.JSONException;
@@ -42,6 +43,12 @@ public final class GoogleAnalyticsLegacyPlugin implements FlutterPlugin {
         @Override
         public void getInstance() {
             ga = GoogleAnalytics.getInstance(context);
+        }
+
+        @SuppressWarnings("deprecation")
+        @Override
+        public void setLogLevelVerbose() {
+            ga.getLogger().setLogLevel(Logger.LogLevel.VERBOSE);
         }
 
         @Override

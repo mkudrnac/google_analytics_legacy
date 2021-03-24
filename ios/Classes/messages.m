@@ -792,6 +792,22 @@ void GALGoogleAnalyticsApiSetup(id<FlutterBinaryMessenger> binaryMessenger, id<G
   {
     FlutterBasicMessageChannel *channel =
       [FlutterBasicMessageChannel
+        messageChannelWithName:@"dev.flutter.pigeon.GoogleAnalyticsApi.setLogLevelVerbose"
+        binaryMessenger:binaryMessenger];
+    if (api) {
+      [channel setMessageHandler:^(id _Nullable message, FlutterReply callback) {
+        FlutterError *error;
+        [api setLogLevelVerbose:&error];
+        callback(wrapResult(nil, error));
+      }];
+    }
+    else {
+      [channel setMessageHandler:nil];
+    }
+  }
+  {
+    FlutterBasicMessageChannel *channel =
+      [FlutterBasicMessageChannel
         messageChannelWithName:@"dev.flutter.pigeon.GoogleAnalyticsApi.setDryRun"
         binaryMessenger:binaryMessenger];
     if (api) {

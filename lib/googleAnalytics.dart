@@ -27,7 +27,9 @@ class GoogleAnalytics {
   }
 
   Future<void> setDryRun(final bool value) async {
-    return _api.setDryRun(GABool()..value = value);
+    return _api.setDryRun(
+      GABool()..value = value,
+    );
   }
 
   Future<bool> isDryRunEnabled() async {
@@ -36,7 +38,9 @@ class GoogleAnalytics {
   }
 
   Future<void> setAppOptOut(final bool value) async {
-    return _api.setAppOptOut(GABool()..value = value);
+    return _api.setAppOptOut(
+      GABool()..value = value,
+    );
   }
 
   Future<bool> getAppOptOut() async {
@@ -45,11 +49,15 @@ class GoogleAnalytics {
   }
 
   Future<void> setLocalDispatchPeriod(final int value) async {
-    return _api.setLocalDispatchPeriod(GAInt()..value = value);
+    return _api.setLocalDispatchPeriod(
+      GAInt()..value = value,
+    );
   }
 
   Future<Tracker> newTracker(final String trackingId) async {
-    final tracker = await _api.newTracker(TrackingId()..trackingId = trackingId);
+    final tracker = await _api.newTracker(
+      TrackingId()..trackingId = trackingId,
+    );
     return Tracker(tracker.trackerId!);
   }
 }

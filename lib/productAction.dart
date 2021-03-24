@@ -1,5 +1,7 @@
 import 'dart:collection';
 
+import 'package:google_analytics_legacy/src/helper.dart';
+
 class ProductAction {
   static final actionDetail = "detail";
   static final actionClick = "click";
@@ -29,10 +31,12 @@ class ProductAction {
   set productListSource(final String? value) => _put("&pls", value);
 
   HashMap<String, String> build() {
-    return _params;
+    return HashMap<String, String>.from(
+      _params.map((key, value) => MapEntry(key, Helper.encodeValue(value))),
+    );
   }
 
   void _put(final String name, final String? value) {
-    _params[name] = value != null ? Uri.encodeComponent(value) : "null";
+    _params[name] = value ?? "null";
   }
 }

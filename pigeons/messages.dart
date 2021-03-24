@@ -100,6 +100,7 @@ class TrackerId {
 @HostApi()
 abstract class GoogleAnalyticsApi {
   void getInstance();
+  void setLogLevelVerbose();
   void setDryRun(GABool value);
   GABool isDryRunEnabled();
   void setAppOptOut(GABool value);

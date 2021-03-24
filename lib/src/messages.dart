@@ -254,9 +254,11 @@ class TrackingId {
 class TrackerApi {
   Future<void> enableExceptionReporting(TrackerBoolValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.enableExceptionReporting', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.enableExceptionReporting',
+        StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -264,7 +266,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -277,9 +280,11 @@ class TrackerApi {
 
   Future<void> setSessionTimeout(TrackerIntValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.setSessionTimeout', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.setSessionTimeout',
+        StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -287,7 +292,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -301,8 +307,10 @@ class TrackerApi {
   Future<void> enableAutoActivityTracking(TrackerBoolValue arg) async {
     final Object encoded = arg.encode();
     const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.TrackerApi.enableAutoActivityTracking', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+        'dev.flutter.pigeon.TrackerApi.enableAutoActivityTracking',
+        StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -310,7 +318,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -323,9 +332,10 @@ class TrackerApi {
 
   Future<void> send(HitBuilderMessage arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.send', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.send', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -333,7 +343,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -346,9 +357,10 @@ class TrackerApi {
 
   Future<TrackerGetValue> get(TrackerStringValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.get', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.get', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -356,7 +368,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -369,9 +382,10 @@ class TrackerApi {
 
   Future<void> set(TrackerSetValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.set', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.set', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -379,7 +393,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -392,9 +407,10 @@ class TrackerApi {
 
   Future<void> setSampleRate(TrackerDoubleValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.setSampleRate', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.setSampleRate', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -402,7 +418,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -415,9 +432,10 @@ class TrackerApi {
 
   Future<void> setUseSecure(TrackerBoolValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.setUseSecure', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.setUseSecure', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -425,7 +443,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -438,9 +457,10 @@ class TrackerApi {
 
   Future<void> setScreenName(TrackerStringValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.setScreenName', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.setScreenName', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -448,7 +468,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -461,9 +482,10 @@ class TrackerApi {
 
   Future<void> setLocation(TrackerStringValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.setLocation', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.setLocation', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -471,7 +493,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -484,9 +507,10 @@ class TrackerApi {
 
   Future<void> setReferrer(TrackerStringValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.setReferrer', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.setReferrer', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -494,7 +518,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -507,9 +532,10 @@ class TrackerApi {
 
   Future<void> setPage(TrackerStringValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.setPage', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.setPage', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -517,7 +543,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -530,9 +557,10 @@ class TrackerApi {
 
   Future<void> setHostname(TrackerStringValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.setHostname', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.setHostname', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -540,7 +568,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -553,9 +582,10 @@ class TrackerApi {
 
   Future<void> setTitle(TrackerStringValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.setTitle', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.setTitle', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -563,7 +593,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -576,9 +607,10 @@ class TrackerApi {
 
   Future<void> setLanguage(TrackerStringValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.setLanguage', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.setLanguage', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -586,7 +618,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -599,9 +632,10 @@ class TrackerApi {
 
   Future<void> setEncoding(TrackerStringValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.setEncoding', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.setEncoding', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -609,7 +643,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -622,9 +657,11 @@ class TrackerApi {
 
   Future<void> setScreenColors(TrackerStringValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.setScreenColors', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.setScreenColors',
+        StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -632,7 +669,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -645,9 +683,11 @@ class TrackerApi {
 
   Future<void> setScreenResolution(TrackerSetScreenResolutionValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.setScreenResolution', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.setScreenResolution',
+        StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -655,7 +695,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -668,9 +709,11 @@ class TrackerApi {
 
   Future<void> setViewportSize(TrackerStringValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.setViewportSize', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.setViewportSize',
+        StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -678,7 +721,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -691,9 +735,10 @@ class TrackerApi {
 
   Future<TrackerGetClientIdValue> getClientId(TrackerIdValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.getClientId', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.getClientId', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -701,7 +746,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -714,9 +760,10 @@ class TrackerApi {
 
   Future<void> setClientId(TrackerStringValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.setClientId', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.setClientId', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -724,7 +771,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -737,9 +785,10 @@ class TrackerApi {
 
   Future<void> setAppName(TrackerStringValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.setAppName', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.setAppName', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -747,7 +796,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -760,9 +810,10 @@ class TrackerApi {
 
   Future<void> setAppId(TrackerStringValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.setAppId', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.setAppId', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -770,7 +821,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -783,9 +835,11 @@ class TrackerApi {
 
   Future<void> setAppInstallerId(TrackerStringValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.setAppInstallerId', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.setAppInstallerId',
+        StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -793,7 +847,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -806,9 +861,10 @@ class TrackerApi {
 
   Future<void> setAppVersion(TrackerStringValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.setAppVersion', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.setAppVersion', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -816,7 +872,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -829,9 +886,10 @@ class TrackerApi {
 
   Future<void> setAnonymizeIp(TrackerBoolValue arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.TrackerApi.setAnonymizeIp', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.TrackerApi.setAnonymizeIp', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -839,7 +897,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -853,8 +912,10 @@ class TrackerApi {
   Future<void> enableAdvertisingIdCollection(TrackerBoolValue arg) async {
     final Object encoded = arg.encode();
     const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.TrackerApi.enableAdvertisingIdCollection', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+        'dev.flutter.pigeon.TrackerApi.enableAdvertisingIdCollection',
+        StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -862,7 +923,8 @@ class TrackerApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -876,9 +938,11 @@ class TrackerApi {
 
 class GoogleAnalyticsApi {
   Future<void> getInstance() async {
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.GoogleAnalyticsApi.getInstance', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(null) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.GoogleAnalyticsApi.getInstance',
+        StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(null) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -886,7 +950,33 @@ class GoogleAnalyticsApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
+      throw PlatformException(
+        code: (error['code'] as String?)!,
+        message: error['message'] as String?,
+        details: error['details'],
+      );
+    } else {
+      // noop
+    }
+  }
+
+  Future<void> setLogLevelVerbose() async {
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.GoogleAnalyticsApi.setLogLevelVerbose',
+        StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(null) as Map<Object?, Object?>?;
+    if (replyMap == null) {
+      throw PlatformException(
+        code: 'channel-error',
+        message: 'Unable to establish connection on channel.',
+        details: null,
+      );
+    } else if (replyMap['error'] != null) {
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -899,9 +989,11 @@ class GoogleAnalyticsApi {
 
   Future<void> setDryRun(GABool arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.GoogleAnalyticsApi.setDryRun', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.GoogleAnalyticsApi.setDryRun',
+        StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -909,7 +1001,8 @@ class GoogleAnalyticsApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -921,9 +1014,11 @@ class GoogleAnalyticsApi {
   }
 
   Future<GABool> isDryRunEnabled() async {
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.GoogleAnalyticsApi.isDryRunEnabled', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(null) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.GoogleAnalyticsApi.isDryRunEnabled',
+        StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(null) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -931,7 +1026,8 @@ class GoogleAnalyticsApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -944,9 +1040,11 @@ class GoogleAnalyticsApi {
 
   Future<void> setAppOptOut(GABool arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.GoogleAnalyticsApi.setAppOptOut', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.GoogleAnalyticsApi.setAppOptOut',
+        StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -954,7 +1052,8 @@ class GoogleAnalyticsApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -966,9 +1065,11 @@ class GoogleAnalyticsApi {
   }
 
   Future<GABool> getAppOptOut() async {
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.GoogleAnalyticsApi.getAppOptOut', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(null) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.GoogleAnalyticsApi.getAppOptOut',
+        StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(null) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -976,7 +1077,8 @@ class GoogleAnalyticsApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -990,8 +1092,10 @@ class GoogleAnalyticsApi {
   Future<void> setLocalDispatchPeriod(GAInt arg) async {
     final Object encoded = arg.encode();
     const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.GoogleAnalyticsApi.setLocalDispatchPeriod', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+        'dev.flutter.pigeon.GoogleAnalyticsApi.setLocalDispatchPeriod',
+        StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -999,7 +1103,8 @@ class GoogleAnalyticsApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -1012,9 +1117,11 @@ class GoogleAnalyticsApi {
 
   Future<TrackerId> newTracker(TrackingId arg) async {
     final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel =
-        BasicMessageChannel<Object?>('dev.flutter.pigeon.GoogleAnalyticsApi.newTracker', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.GoogleAnalyticsApi.newTracker',
+        StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(encoded) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1022,7 +1129,8 @@ class GoogleAnalyticsApi {
         details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,

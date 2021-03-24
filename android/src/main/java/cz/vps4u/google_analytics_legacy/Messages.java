@@ -948,6 +948,7 @@ public class Messages {
   /** Generated interface from Pigeon that represents a handler of messages from Flutter.*/
   public interface GoogleAnalyticsApi {
     void getInstance();
+    void setLogLevelVerbose();
     void setDryRun(GABool arg);
     GABool isDryRunEnabled();
     void setAppOptOut(GABool arg);
@@ -965,6 +966,25 @@ public class Messages {
             Map<String, Object> wrapped = new HashMap<>();
             try {
               api.getInstance();
+              wrapped.put("result", null);
+            }
+            catch (Error | RuntimeException exception) {
+              wrapped.put("error", wrapError(exception));
+            }
+            reply.reply(wrapped);
+          });
+        } else {
+          channel.setMessageHandler(null);
+        }
+      }
+      {
+        BasicMessageChannel<Object> channel =
+            new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.GoogleAnalyticsApi.setLogLevelVerbose", new StandardMessageCodec());
+        if (api != null) {
+          channel.setMessageHandler((message, reply) -> {
+            Map<String, Object> wrapped = new HashMap<>();
+            try {
+              api.setLogLevelVerbose();
               wrapped.put("result", null);
             }
             catch (Error | RuntimeException exception) {
