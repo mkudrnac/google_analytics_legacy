@@ -54,7 +54,7 @@ class EventBuilder extends HitBuilder {
 }
 
 class HitBuilder {
-  final _map = HashMap<String, String>();
+  final _map = HashMap<String, String?>();
   ProductAction? _productAction;
   final _productImpressions = HashMap<String, List<Product>>();
   final _promotions = <Promotion>[];
@@ -71,22 +71,17 @@ class HitBuilder {
   void setCampaignParamsFromUrl(final String? url) {
     if (url != null && url.isNotEmpty) {
       final uri = Uri.parse(url);
-      final setCampaignParam = (final String key, final String? value) {
-        if (value != null) {
-          set(key, value);
-        }
-      };
-      setCampaignParam("&cc", uri.queryParameters["utm_content"]);
-      setCampaignParam("&cm", uri.queryParameters["utm_medium"]);
-      setCampaignParam("&cn", uri.queryParameters["utm_campaign"]);
-      setCampaignParam("&cs", uri.queryParameters["utm_source"]);
-      setCampaignParam("&ck", uri.queryParameters["utm_term"]);
-      setCampaignParam("&ci", uri.queryParameters["utm_id"]);
-      setCampaignParam("&anid", uri.queryParameters["anid"]);
-      setCampaignParam("&gclid", uri.queryParameters["gclid"]);
-      setCampaignParam("&dclid", uri.queryParameters["dclid"]);
-      setCampaignParam("&aclid", uri.queryParameters["aclid"]);
-      setCampaignParam("&gmob_t", uri.queryParameters["gmob_t"]);
+      set("&cc", uri.queryParameters["utm_content"]);
+      set("&cm", uri.queryParameters["utm_medium"]);
+      set("&cn", uri.queryParameters["utm_campaign"]);
+      set("&cs", uri.queryParameters["utm_source"]);
+      set("&ck", uri.queryParameters["utm_term"]);
+      set("&ci", uri.queryParameters["utm_id"]);
+      set("&anid", uri.queryParameters["anid"]);
+      set("&gclid", uri.queryParameters["gclid"]);
+      set("&dclid", uri.queryParameters["dclid"]);
+      set("&aclid", uri.queryParameters["aclid"]);
+      set("&gmob_t", uri.queryParameters["gmob_t"]);
     }
   }
 
@@ -132,14 +127,18 @@ class HitBuilder {
   }
 
   void set(final String paramName, final String? value) {
-    _map[paramName] = value ?? "null";
+    _map[paramName] = value;
   }
 
   HashMap<String, String> build() {
     // All key/values
-    final buildMap = HashMap<String, String>.from(
-      _map.map((key, value) => MapEntry(key, Helper.encodeValue(value))),
-    );
+    final buildMap = HashMap<String, String>();
+    for (final item in _map.entries) {
+      final value = item.value;
+      if (value != null) {
+        buildMap[item.key] = Helper.encodeValue(value);
+      }
+    }
 
     // Product action
     final productAction = _productAction;

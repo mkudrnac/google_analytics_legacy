@@ -8,10 +8,10 @@ class Helper {
     return value;
   }
 
-  static String convertBool(final bool? value) {
+  static String? convertBool(final bool? value) {
     if (value != null) {
       return value ? "1" : "0";
     }
-    return "null";
+    return null;
   }
 }

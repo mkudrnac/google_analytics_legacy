@@ -13,7 +13,7 @@ class ProductAction {
   static final actionPurchase = "purchase";
   static final actionRefund = "refund";
 
-  final _params = HashMap<String, String>();
+  final _params = HashMap<String, String?>();
 
   ProductAction(final String action) {
     _put("&pa", action);
@@ -31,12 +31,17 @@ class ProductAction {
   set productListSource(final String? value) => _put("&pls", value);
 
   HashMap<String, String> build() {
-    return HashMap<String, String>.from(
-      _params.map((key, value) => MapEntry(key, Helper.encodeValue(value))),
-    );
+    final buildMap = HashMap<String, String>();
+    for (final param in _params.entries) {
+      final value = param.value;
+      if (value != null) {
+        buildMap[param.key] = Helper.encodeValue(value);
+      }
+    }
+    return buildMap;
   }
 
   void _put(final String name, final String? value) {
-    _params[name] = value ?? "null";
+    _params[name] = value;
   }
 }

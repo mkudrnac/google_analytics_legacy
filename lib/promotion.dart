@@ -5,7 +5,7 @@ import 'package:google_analytics_legacy/src/helper.dart';
 class Promotion {
   static final actionClick = "click";
   static final actionView = "view";
-  final _params = HashMap<String, String>();
+  final _params = HashMap<String, String?>();
 
   set id(final String? value) => _put("id", value);
   set name(final String? value) => _put("nm", value);
@@ -15,12 +15,15 @@ class Promotion {
   HashMap<String, String> build(final String prefix) {
     final buildMap = HashMap<String, String>();
     for (final param in _params.entries) {
-      buildMap[prefix + param.key] = Helper.encodeValue(param.value);
+      final value = param.value;
+      if (value != null) {
+        buildMap[prefix + param.key] = Helper.encodeValue(value);
+      }
     }
     return buildMap;
   }
 
   void _put(final String name, final String? value) {
-    _params[name] = value ?? "null";
+    _params[name] = value;
   }
 }
