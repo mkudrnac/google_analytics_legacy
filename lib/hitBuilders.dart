@@ -162,7 +162,7 @@ class HitBuilder {
     for (final productImpession in _productImpressions.entries) {
       final impressionPrefix = ZZD.zzm(impressionIndex);
       productImpession.value.asMap().forEach((index, product) {
-        final productPrefix = impressionPrefix + ZZD.zzl(index);
+        final productPrefix = impressionPrefix + ZZD.zzl(index + 1);
         buildMap.addAll(product.build(productPrefix));
       });
       final impressionKey = impressionPrefix + "nm";
