@@ -1,3 +1,7 @@
+## 1.0.0.
+
+* production ready
+
 ## 0.0.12
 
 * testing release.

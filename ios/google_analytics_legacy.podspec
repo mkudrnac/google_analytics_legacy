@@ -4,8 +4,8 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'google_analytics_legacy'
-  s.version          = '0.0.12'
-  s.summary          = 'A new flutter plugin project.'
+  s.version          = '1.0.0'
+  s.summary          = 'Flutter plugin for Google Analytics (Universal Analytics).'
   s.description      = <<-DESC
   Legacy Google Analytics plugin.
                        DESC
