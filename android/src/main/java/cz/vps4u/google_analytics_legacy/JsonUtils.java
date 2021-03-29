@@ -16,8 +16,8 @@ public final class JsonUtils {
         final Iterator<String> keysItr = object.keys();
         while (keysItr.hasNext()) {
             final String key = keysItr.next();
-            final String value = (String) object.get(key);
-            map.put(key, value);
+            final Object value = object.get(key);
+            map.put(key, value instanceof String ? (String) value : "");
         }
         return map;
     }

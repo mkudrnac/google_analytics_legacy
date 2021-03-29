@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'google_analytics_legacy'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Flutter plugin for Google Analytics (Universal Analytics).'
   s.description      = <<-DESC
   Legacy Google Analytics plugin.

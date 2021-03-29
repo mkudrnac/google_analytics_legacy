@@ -97,12 +97,13 @@ class HitBuilder {
     _productAction = productAction;
   }
 
-  void addImpression(final Product product, final String impression) {
-    final item = _productImpressions[impression];
+  void addImpression(final Product product, final String? impression) {
+    final key = impression ?? "";
+    final item = _productImpressions[key];
     if (item != null) {
       item.add(product);
     } else {
-      _productImpressions[impression] = [product];
+      _productImpressions[key] = [product];
     }
   }
 

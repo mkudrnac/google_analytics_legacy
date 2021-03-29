@@ -1,4 +1,8 @@
-## 1.0.0.
+## 1.0.1
+
+* fix: product impression can be null
+
+## 1.0.0
 
 * production ready
 
