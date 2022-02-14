@@ -1,3 +1,8 @@
+## 1.0.2
+
+* Android S fix
+* Updates Android compileSdkVersion to 31.
+
 ## 1.0.1
 
 * fix: product impression can be null
