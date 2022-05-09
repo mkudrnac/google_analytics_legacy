@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'google_analytics_legacy'
-  s.version          = '1.0.1'
+  s.version          = '1.0.3'
   s.summary          = 'Flutter plugin for Google Analytics (Universal Analytics).'
   s.description      = <<-DESC
   Legacy Google Analytics plugin.
@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
-  s.dependency 'GoogleAnalytics', '3.17.0'
+  s.dependency 'GoogleAnalytics', '3.20.0'
   s.dependency 'GoogleIDFASupport', '3.14.0'
   s.platform = :ios, '8.0'
   s.static_framework = true

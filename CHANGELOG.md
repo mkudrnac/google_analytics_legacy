@@ -1,3 +1,8 @@
+## 1.0.3
+
+* fix iOS (#2)
+* update Dart SDK version constraint to Dart >= 2.16.0 
+
 ## 1.0.2
 
 * Android S fix
