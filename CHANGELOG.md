@@ -1,3 +1,7 @@
+## 1.0.4
+
+* added setValueEncoder for disable enconding value or set custom value encoder
+
 ## 1.0.3
 
 * fix iOS (#2)

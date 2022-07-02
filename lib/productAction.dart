@@ -14,6 +14,7 @@ class ProductAction {
   static final actionRefund = "refund";
 
   final _params = HashMap<String, String?>();
+  String Function(String)? _valueEncoder = Helper.encodeValue;
 
   ProductAction(final String action) {
     _put("&pa", action);
@@ -30,12 +31,16 @@ class ProductAction {
   set productActionList(final String? value) => _put("&pal", value);
   set productListSource(final String? value) => _put("&pls", value);
 
+  void setValueEncoder(final String Function(String)? valueEncoder) {
+    _valueEncoder = valueEncoder;
+  }
+
   HashMap<String, String> build() {
     final buildMap = HashMap<String, String>();
     for (final param in _params.entries) {
       final value = param.value;
       if (value != null) {
-        buildMap[param.key] = Helper.encodeValue(value);
+        buildMap[param.key] = _valueEncoder?.call(value) ?? value;
       }
     }
     return buildMap;

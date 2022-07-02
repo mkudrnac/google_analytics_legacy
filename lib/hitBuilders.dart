@@ -55,10 +55,11 @@ class EventBuilder extends HitBuilder {
 
 class HitBuilder {
   final _map = HashMap<String, String?>();
-  ProductAction? _productAction;
   final _productImpressions = HashMap<String, List<Product>>();
   final _promotions = <Promotion>[];
   final _products = <Product>[];
+  ProductAction? _productAction;
+  String Function(String)? _valueEncoder = Helper.encodeValue;
 
   void setNewSession() {
     set("&sc", "start");
@@ -95,6 +96,10 @@ class HitBuilder {
 
   void setProductAction(final ProductAction? productAction) {
     _productAction = productAction;
+  }
+
+  void setValueEncoder(final String Function(String)? valueEncoder) {
+    _valueEncoder = valueEncoder;
   }
 
   void addImpression(final Product product, final String? impression) {
@@ -137,7 +142,7 @@ class HitBuilder {
     for (final item in _map.entries) {
       final value = item.value;
       if (value != null) {
-        buildMap[item.key] = Helper.encodeValue(value);
+        buildMap[item.key] = _valueEncoder?.call(value) ?? value;
       }
     }
 
